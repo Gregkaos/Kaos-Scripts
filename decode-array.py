@@ -25,6 +25,11 @@ ffGGhh_1 = aRRaY("2449, 2461, 2461, 2457, 2403, 2392, 2392, 2464, 2464, 2464, 23
 
 http://www.badurl.com/evil.exe
 
+For Combo methods two URLs get printed out with one probably looking wrong.  On my ToDo list.
+I've never seen one in my analyses, but I'm sure I'll come across it one day.  
+If both look wrong but you can recognise a URL format then may need to increase the i value.  ToDo list.
+
+
 """
 
 def GetFile(filename):
