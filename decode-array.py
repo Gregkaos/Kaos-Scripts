@@ -10,6 +10,22 @@ import sys
 import string
 import re
 
+"""
+decode-array.py reads from the given file or standard input, and attempts to convert aobfuscated URLs hidden in arrays or splits 
+usage examples:   
+
+[user@mypc scripts]$  oledump -s 8 maldoc.vir | ./decode-array.py
+
+http://www.badurl.com/evil.exe
+
+[user@mypc scripts]$ cat bad.txt 
+
+ffGGhh_1 = aRRaY("2449, 2461, 2461, 2457, 2403, 2392, 2392, 2464, 2464, 2464, 2391, 2443, 2442, 2445, 2462, 2459, 2453, 2391, 2444, 2456, 2454, 2392, 2446, 2463, 2450, 2453, 2391, 2446, 2465, 2446")
+[user@mypc scripts]$ ./decode-array.py bad.txt 
+
+http://www.badurl.com/evil.exe
+
+"""
 
 def GetFile(filename):
     try:
