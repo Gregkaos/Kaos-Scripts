@@ -69,10 +69,10 @@ def DecodeComboURL(url_list):
 
 def DecodeComboURLDown(url_list):
 	i = 1
-	h = int(url_list):
+	h = int(url_list[0])
 	while i < 10000:
-		if ((h - i) % 104 == 0:
-			div_h (h - i) / 104
+		if ((h - i) % 104)  == 0:
+			div_h = (h - i) / 104
 			break
 		i += 1
 	for item in url_list:
