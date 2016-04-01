@@ -101,6 +101,8 @@ def Start(file):
 		DecodeSumURL(url_list)
 	if div == None and sum == None:
 		DecodeComboURL(url_list)
+		print "\n"
+		DecodeComboURLDown(url_list)
 	print '\n'
 
 def Main():
