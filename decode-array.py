@@ -67,6 +67,17 @@ def DecodeComboURL(url_list):
 	for item in url_list:
 		sys.stdout.write(chr((int(item) + i) / div_h)) 
 
+def DecodeComboURLDown(url_list):
+	i = 1
+	h = int(url_list):
+	while i < 10000:
+		if ((h - i) % 104 == 0:
+			div_h (h - i) / 104
+			break
+		i += 1
+	for item in url_list:
+		sys.stdout.write(chr((int(item) - 1) / div_h))
+
 def Start(file):
 	if file == '':
         	file = sys.stdin.readlines()
