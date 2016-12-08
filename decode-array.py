@@ -3,7 +3,7 @@
 __description__ = 'Decode Array or Split URL obfucation script'
 __author__ = 'Greg Kay'
 __version__ = '0.0.7'
-__date__ = '2016/03/28'
+__date__ = '2016/11/28'
 
 import optparse
 import sys
@@ -22,13 +22,10 @@ def GetFile(filename):
     finally:
         f.close()
 
-def GetCleanString(key,line):
-	before_key, keyword, after_key = line.partition(key)
-	return after_key
-
-def CreateList(new_string):
-	words=re.sub(r'[a-zA-Z"(),_|.=]', ' ', new_string).split()
-	return words
+def CreateList(line):
+	string=line[line.index("(") + 1:line.rindex(")")]
+	list_clean=re.sub(r'[,|_."]', ' ', string)
+	return list_clean.split()
 
 def IsDivide(i):
 	div_h = int(i[0]) % 104
@@ -58,8 +55,9 @@ def DecodeDivURL(url_list, div):
 def DecodeComboURL(url_list):
 	i = 1
 	h = int(url_list[0])
+	t = int(url_list[1])
 	while i < 10000:
-		if ((h + i) % 104)  == 0:
+		if ((h + i) % 104) and ((t + i) % 116) == 0:
 			div_h = (h + i) / 104
 			break
 		i += 1
@@ -69,8 +67,9 @@ def DecodeComboURL(url_list):
 def DecodeComboURLDown(url_list):
 	i = 1
 	h = int(url_list[0])
+	t = int(url_list[1])
 	while i < 10000:
-		if ((h - i) % 104)  == 0:
+		if ((h - i) % 104) and ((t + i) % 116) == 0:
 			div_h = (h - i) / 104
 			break
 		i += 1
@@ -85,11 +84,10 @@ def Start(file):
 
 	for line in file:
 		if "array" in line.lower():
-			new_string = GetCleanString("array",line.lower())
+			url_list = CreateList(line.lower())
 		if "split" in line.lower():
-			new_string = GetCleanString("split",line.lower())
-		
-	url_list = CreateList(new_string)
+			url_list = CreateList(line.lower())
+	
 	div = IsDivide(url_list)
 	sum = IsSum(url_list)
 	
