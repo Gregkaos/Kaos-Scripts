@@ -22,10 +22,16 @@ def GetFile(filename):
     finally:
         f.close()
 
-def CreateList(line):
+def CreateArrayList(line):
 	string=line[line.index("(") + 1:line.rindex(")")]
 	list_clean=re.sub(r'[,|_."]', ' ', string)
 	return list_clean.split()
+
+def CreateSplitList(line):
+	string=line[line.index("(") + 1:line.rindex(")")]
+	delim=re.search('\w+$', string)
+	list_clean=re.search('^\w+', string)
+	return list_clean.group(0).split(delim.group(0))
 
 def IsDivide(i):
 	div_h = int(i[0]) % 104
@@ -84,9 +90,9 @@ def Start(file):
 
 	for line in file:
 		if "array" in line.lower():
-			url_list = CreateList(line.lower())
+			url_list = CreateArrayList(line.lower())
 		if "split" in line.lower():
-			url_list = CreateList(line.lower())
+			url_list = CreateSplitList(line.lower())
 	
 	div = IsDivide(url_list)
 	sum = IsSum(url_list)
@@ -113,4 +119,3 @@ def Main():
 
 if __name__ == '__main__':
 	Main()
-
