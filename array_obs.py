@@ -21,5 +21,9 @@ f_b = open('b.txt', 'w')
 f_a.write('addition = ArRaY(' + str(add_array).strip('[] ') + ')')
 f_b.write('multiply = aRRaY(' + str(mult_array).strip('[] ') + ')')
 
+print ('addition = ArRaY(' + str(add_array).strip('[] ') + ')')
+print ('\nmultiply = aRRaY(' + str(mult_array).strip('[] ') + ')')
+
 f_a.close()
 f_b.close()
+
