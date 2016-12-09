@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 __description__ = 'Decode Array or Split URL obfucation script'
-__author__ = 'Greg Kay'
+__author__ = 'Greg Kaos'
 __version__ = '0.0.7'
-__date__ = '2016/11/28'
+__date__ = '2016/12/09'
 
 import optparse
 import sys
